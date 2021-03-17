@@ -1,0 +1,43 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  background: #fff;
+}
+
+section {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+
+  &.above-the-fold {
+    height: 100vh;
+    overflow: hidden;
+  
+    video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev, .slick-next {
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+
+  &:before {
+    font-size: 50px;
+  }
+}
