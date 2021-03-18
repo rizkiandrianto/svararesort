@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { fetch } from '../utils/fetch';
 import Loading from '../components/loading';
 import Title from '../components/title';
+import Navbar from '../components/navbar';
 
 const settings = {
   infinite: true,
@@ -22,6 +23,7 @@ const Home = ({ video }) => {
     await fetch('/posts?categories=4').then((secs) => setSections(secs.reverse()));
     if (typeof window !== 'undefined') document.querySelector('body').classList.add('finish');
     await fetch('/posts/50').then((post) => setGallery((post.gallery[0] || []).reverse()));
+
     setLoading(false);
     AOS.init();
   }, []);
@@ -33,8 +35,8 @@ const Home = ({ video }) => {
       return (
         <div>
           <Slider {...settings}>
-            {gallery.map((image) => (
-              <div>
+            {gallery.map((image, index) => (
+              <div key={index}>
                 <div style={{ height: '400px' }}>
                   <img style={{ height: '100%', objectFit: 'cover', width: '100%' }} className="img-fluid" src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${image}`} />
                 </div>
@@ -51,6 +53,7 @@ const Home = ({ video }) => {
   return (
     <>
       <Title title="Home Sweet Home" />
+      <Navbar />
       <div id="fullpage">
         {Boolean(video[0]) && (
           <section className="above-the-fold">
