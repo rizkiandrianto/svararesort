@@ -28,10 +28,11 @@ class CustomDoc extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link rel="icon" href="https://edenresorts.info/favicon/" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="description" content="This is Example of Meta Description" />
         </Head>
         <body className="loading">
           <div className="loading-init-wrapper">

@@ -11,16 +11,20 @@ const Navbar = () => {
 
   useEffect(async () => {
     function updateScrollPosition() {
-      // update the scroll position
-      const scrolled = window.scrollY > (document.querySelector('.above-the-fold') ? document.querySelector('.above-the-fold').clientHeight : window.visualViewport.height / 2);
+      const offset = 56;
+      const scrolled = (window.scrollY + offset) >= (document.querySelector('.above-the-fold') ? document.querySelector('.above-the-fold').clientHeight : window.visualViewport.height / 2);
       setScrolled(scrolled);
     }
 
     if (typeof document !== 'undefined') {
       document.addEventListener('scroll', updateScrollPosition, false);
     }
+
     await fetch(`/wp-api-menus/v2/menus/${process.env.NEXT_PUBLIC_NAVBAR_ID}`, { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json` })
-      .then((menu) => setMenus(menu.items));
+      .then((menu) => {
+        setMenus(menu.items)
+        window.menus = menus;
+      });
 
     return function () {
       document.removeEventListener('scroll', updateScrollPosition, false);
@@ -99,13 +103,11 @@ const Navbar = () => {
         <ul className="m-0 p-0 d-flex">
           {
             menus.map((menu, index) => (
-              <>
-                <li className="d-none d-sm-block" key={index}>
-                  <Link href={menu.url}>
-                    {menu.title}
-                  </Link>
-                </li>
-              </>
+              <li key={index} className="d-none d-sm-block" key={index}>
+                <Link href={menu.url}>
+                  {menu.title}
+                </Link>
+              </li>
             ))
           }
           <li className="d-block d-sm-none">

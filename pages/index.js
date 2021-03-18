@@ -38,7 +38,7 @@ const Home = ({ video }) => {
             {gallery.map((image, index) => (
               <div key={index}>
                 <div style={{ height: '400px' }}>
-                  <img style={{ height: '100%', objectFit: 'cover', width: '100%' }} className="img-fluid" src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${image}`} />
+                  <img alt={`Slider Image ${index + 1}`} style={{ height: '100%', objectFit: 'cover', width: '100%' }} className="img-fluid" src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${image}`} />
                 </div>
               </div>
             ))}
@@ -93,7 +93,7 @@ const Home = ({ video }) => {
                 <div className="container">
                   <div className={`row d-flex flex-row${(index + 1) % 2 === 0 ? '-reverse' : ''}`}>
                     <div className="col-lg-7 col-12 mb-4 mb-sm-0 pr-xl-5">
-                      <img src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${section.featured_image}?optipress=2`} alt="" className="img-fluid aos-init aos-animate" data-aos="fade-in" />
+                      <img alt={"Section Image " + section.title?.rendered} src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${section.featured_image}?optipress=2`} alt="" className="img-fluid aos-init aos-animate" data-aos="fade-in" />
                     </div>
                     <div className="col-lg-5 col-12 d-flex">
                       <div className="box-control center d-flex overflow-hidden">

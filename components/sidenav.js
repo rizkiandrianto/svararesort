@@ -50,13 +50,11 @@ const Sidenav = ({ menus, show }) => (
       <ul className="m-0 p-0 overflow-auto">
         {
           menus.map((menu, index) => (
-            <>
-              <li className="m-0" key={index}>
-                <Link href={menu.url}>
-                  {menu.title}
-                </Link>
-              </li>
-            </>
+            <li className="m-0" key={index}>
+              <Link href={menu.url}>
+                {menu.title}
+              </Link>
+            </li>
           ))
         }
       </ul>
