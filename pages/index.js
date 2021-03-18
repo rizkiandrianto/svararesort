@@ -93,7 +93,7 @@ const Home = ({ video }) => {
                       <img src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${section.featured_image}?optipress=2`} alt="" className="img-fluid aos-init aos-animate" data-aos="fade-in" />
                     </div>
                     <div className="col-lg-5 col-12 d-flex">
-                      <div className="box-control center d-flex">
+                      <div className="box-control center d-flex overflow-hidden">
                         <div className="box-content d-flex justify-content-between flex-column pl-xl-5">
                           <h3 className="heading mb68 aos-init aos-animate mx-0 mb-4 mb-sm-0" data-aos="fade-left">{section.title?.rendered}</h3>
                           <p data-aos="fade-up" className="aos-init aos-animate" dangerouslySetInnerHTML={{ __html: section.content?.rendered }} />
