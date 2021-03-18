@@ -1,5 +1,5 @@
 const Fetch = (url, param) => {
-  const basic = { baseUrl: 'https://edenresorts.info/wp-json/wp/v2' };
+  const basic = { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json/wp/v2` };
   const settings = param ? { ...basic, ...param } : basic;
   const { baseUrl } = settings;
 

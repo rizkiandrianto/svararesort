@@ -36,7 +36,7 @@ const Home = ({ video }) => {
             {gallery.map((image) => (
               <div>
                 <div style={{ height: '400px' }}>
-                  <img style={{ height: '100%', objectFit: 'cover', width: '100%' }} className="img-fluid" src={`https://almcnpfqcp.cloudimg.io/v7/${image}`} />
+                  <img style={{ height: '100%', objectFit: 'cover', width: '100%' }} className="img-fluid" src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${image}`} />
                 </div>
               </div>
             ))}
@@ -90,16 +90,18 @@ const Home = ({ video }) => {
                 <div className="container">
                   <div className={`row d-flex flex-row${(index + 1) % 2 === 0 ? '-reverse' : ''}`}>
                     <div className="col-lg-7 col-12 mb-4 mb-sm-0 pr-xl-5">
-                      <img src={`https://almcnpfqcp.cloudimg.io/v7/${section.featured_image}?optipress=2`} alt="" className="img-fluid aos-init aos-animate" data-aos="fade-in" />
+                      <img src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${section.featured_image}?optipress=2`} alt="" className="img-fluid aos-init aos-animate" data-aos="fade-in" />
                     </div>
                     <div className="col-lg-5 col-12 d-flex">
                       <div className="box-control center d-flex">
                         <div className="box-content d-flex justify-content-between flex-column pl-xl-5">
                           <h3 className="heading mb68 aos-init aos-animate mx-0 mb-4 mb-sm-0" data-aos="fade-left">{section.title?.rendered}</h3>
                           <p data-aos="fade-up" className="aos-init aos-animate" dangerouslySetInnerHTML={{ __html: section.content?.rendered }} />
-                          <div>
-                            <a data-aos="fade-left" href="https://www.thetamora.com/next-level-apartment/" className="btn btn-outline-secondary text-uppercase aos-init">discover</a>
-                          </div>
+                          {section.button_link && (
+                            <div>
+                              <a data-aos="fade-left" href={section.button_link} className="btn btn-outline-secondary text-uppercase aos-init">discover</a>
+                            </div>
+                          )}
                         </div>
                       </div>
                     </div>
