@@ -2,6 +2,7 @@ import { fetch } from '../../utils/fetch';
 import Error from 'next/error';
 import Navbar from '../../components/navbar';
 import Title from '../../components/title';
+import Footbar from '../../components/footbar';
 
 const Page = ({ statusCode, page }) => {
   if (statusCode > 300) {
@@ -34,6 +35,8 @@ const Page = ({ statusCode, page }) => {
         <h1 className="mb-4 py-4">{page.title.rendered}</h1>
         <div dangerouslySetInnerHTML={{ __html: page.content.rendered }} />
       </section>
+
+      <Footbar />
     </>
   );
 };

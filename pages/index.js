@@ -5,6 +5,7 @@ import { fetch } from '../utils/fetch';
 import Loading from '../components/loading';
 import Title from '../components/title';
 import Navbar from '../components/navbar';
+import Footbar from '../components/footbar';
 
 const settings = {
   infinite: true,
@@ -117,6 +118,7 @@ const Home = ({ video }) => {
           ))
         }
       </div>
+      <Footbar />
     </>
   );
 }
