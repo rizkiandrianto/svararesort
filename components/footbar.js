@@ -5,8 +5,8 @@ const Footbar = () => {
   const [menus, setMenus] = useState([]);
   const [scrolled, setScrolled] = useState(false);
   useEffect(async () => {
-    await fetch(`/wp-api-menus/v2/menus/${process.env.NEXT_PUBLIC_SOCMED_ID}`, { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json` })
-      .then((menu) => setMenus(menu.items))
+    await fetch(`/wp-api-menus/v2/menus/''`, { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json` })
+      .then((menu) => setMenus(menu.items || []))
 
     function updateScrollPosition() {
       const offset = 56;
