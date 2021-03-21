@@ -4,23 +4,29 @@ const fetch = require('../utils/fetch').fetch
 const Footbar = () => {
   const [menus, setMenus] = useState([]);
   const [scrolled, setScrolled] = useState(false);
+  const offset = 56;
+
   useEffect(async () => {
     await fetch(`/wp-api-menus/v2/menus/${process.env.NEXT_PUBLIC_SOCMED_ID}`, { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json` })
       .then((menu) => setMenus(menu.items || []))
       .catch(() => false)
 
     function updateScrollPosition() {
-      const offset = 56;
+
       const scrolled = (window.scrollY + offset) >= (document.querySelector('.above-the-fold') ? document.querySelector('.above-the-fold').clientHeight : window.visualViewport.height / 2);
       setScrolled(scrolled);
     }
 
-    if (typeof document !== 'undefined') {
+    if (typeof document !== 'undefined' && menus != 0) {
       document.addEventListener('scroll', updateScrollPosition, false);
+      document.body.style.paddingBottom = `${offset + 4}px`;
     }
 
     return function () {
-      document.removeEventListener('scroll', updateScrollPosition, false);
+      if (menus != 0) {
+        document.removeEventListener('scroll', updateScrollPosition, false);
+        document.body.style.paddingBottom = '0px';
+      }
     }
   }, [])
 
