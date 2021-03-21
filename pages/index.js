@@ -6,6 +6,7 @@ import Loading from '../components/loading';
 import Title from '../components/title';
 import Navbar from '../components/navbar';
 import Footbar from '../components/footbar';
+import Forms from '../components/forms';
 
 const settings = {
   infinite: true,
@@ -93,7 +94,7 @@ const Home = ({ video }) => {
               <section className="py-5 py-sm-0" style={{ background: section.background }}>
                 <div className="container">
                   <div className={`row d-flex flex-row${(index + 1) % 2 === 0 ? '-reverse' : ''}`}>
-                    <div className="col-lg-7 col-12 mb-4 mb-sm-0 pr-xl-5">
+                    <div className="col-lg-7 col-12 mb-4 mb-md-0 pr-xl-5">
                       <img alt={"Section Image " + section.title?.rendered} src={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${section.featured_image}?optipress=2`} alt="" className="img-fluid aos-init aos-animate" data-aos="fade-in" />
                     </div>
                     <div className="col-lg-5 col-12 d-flex">
@@ -117,6 +118,16 @@ const Home = ({ video }) => {
             </React.Fragment>
           ))
         }
+
+        <section>
+          <div id="invest" className="container">
+            <div className="row">
+              <div className="col-12 col-sm-6 offset-sm-6">
+                <Forms id={82} />
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <Footbar />
     </>
