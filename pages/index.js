@@ -21,9 +21,9 @@ const Home = ({ video }) => {
   const [gallery, setGallery] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(async () => {
-    await fetch(`/posts?categories=${process.env.NEXT_PUBLIC_HOMESECTION_ID}`).then((secs) => setSections(secs.reverse()));
+    await fetch(`/posts?categories=${process.env.NEXT_PUBLIC_HOMESECTION_ID}`).then((secs) => setSections(secs.reverse())).catch(() => false);
     if (typeof window !== 'undefined') document.querySelector('body').classList.add('finish');
-    await fetch(`/posts/${process.env.NEXT_PUBLIC_HOMESLIDER_ID}`).then((post) => setGallery((post.gallery[0] || []).reverse()));
+    await fetch(`/posts/${process.env.NEXT_PUBLIC_HOMESLIDER_ID}`).then((post) => setGallery((post.gallery[0] || []).reverse())).catch(() => false);
 
     setLoading(false);
     AOS.init();

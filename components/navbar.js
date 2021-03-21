@@ -24,7 +24,8 @@ const Navbar = () => {
       .then((menu) => {
         setMenus(menu.items)
         window.menus = menus;
-      });
+      })
+      .catch(() => false);
 
     return function () {
       document.removeEventListener('scroll', updateScrollPosition, false);
