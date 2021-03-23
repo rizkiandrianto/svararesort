@@ -8,6 +8,7 @@ const Navbar = () => {
   const [menus, setMenus] = useState([]);
   const [scrolled, setScrolled] = useState(false);
   const [sidenav, setSidenav] = useState(false);
+  const height = 56;
 
   useEffect(async () => {
     function updateScrollPosition() {
@@ -43,17 +44,23 @@ const Navbar = () => {
           #navbar-wrapper {
             position: fixed;
             width: 100vw;
-            height: 56px;
+            height: ${height * 2}px;
             z-index: 9;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            justify-content: flex-end;
             transition: all .3s ease;
 
             &.scrolled {
+              height: ${height}px;
               background: #fff;
               box-shadow: 0px 2px 10px -7px rgba(0, 0, 0, 0.3);
+
+              .logo-wrapper {
+                img {
+                  filter: none;
+                }
+              }
             }
 
             [class*="btn-outline"] {
@@ -72,6 +79,12 @@ const Navbar = () => {
                 list-style: none;
                 margin-right: 20px;
                 font-size: 16px;
+              }
+            }
+
+            .logo-wrapper {
+              img {
+                filter: contrast(100);
               }
             }
           }
@@ -101,6 +114,9 @@ const Navbar = () => {
         `}
       </style>
       <nav id="navbar-wrapper" className={scrolled && !sidenav && 'scrolled'}>
+        <div className="logo-wrapper pl-4">
+          <img src={process.env.NEXT_PUBLIC_IMAGE_CDN + 'https://api.svararesort.com/logotype?w=100&h=35'} />
+        </div>
         <ul className="m-0 p-0 d-flex">
           {
             menus.map((menu, index) => (
