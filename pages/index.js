@@ -24,6 +24,11 @@ const HomepageTemp = () => {
             h1 {
               line-height: 2.0;
               letter-spacing: 1.5px;
+
+              @media (max-width: 1024px) {
+                font-size: 16px;
+                line-height: 1.5;
+              }
             }
           }
         `}
