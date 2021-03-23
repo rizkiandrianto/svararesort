@@ -31,7 +31,6 @@ class CustomDoc extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href={`${process.env.NEXT_PUBLIC_API_HOST}/favicon/`} />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="description" content="This is Example of Meta Description" />
         </Head>
         <body className="loading">

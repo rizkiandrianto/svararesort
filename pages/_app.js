@@ -11,6 +11,7 @@ import 'nprogress/nprogress.css';
 
 import '../styles/global.scss';
 import { fetch } from '../utils/fetch';
+import Head from 'next/head';
 
 
 function CustomApp({ Component, pageProps }) {
@@ -27,7 +28,14 @@ function CustomApp({ Component, pageProps }) {
     Router.events.on("routeChangeError", NprogressStop);
   }, []);
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 CustomApp.getInitialProps = async ({ ctx }) => {
@@ -46,8 +54,9 @@ CustomApp.getInitialProps = async ({ ctx }) => {
     })
   })
     .then((data) => {
-      console.log(data);
-      cookie.set(process.env.NEXT_PUBLIC_INSTORE_TOKEN, data.token);
+      try {
+        cookie.set(process.env.NEXT_PUBLIC_INSTORE_TOKEN, data.token);
+      } catch (error) { }
     })
     .catch(async () => await getToken())
 
