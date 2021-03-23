@@ -30,7 +30,7 @@ class CustomDoc extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href={`${process.env.NEXT_PUBLIC_API_HOST}/favicon/`} />
+          <link rel="icon" href={`${process.env.NEXT_PUBLIC_IMAGE_CDN}${process.env.NEXT_PUBLIC_API_HOST}/favicon?w=32&h=32`} />
           <meta name="description" content="This is Example of Meta Description" />
         </Head>
         <body className="loading">
