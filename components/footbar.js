@@ -7,12 +7,15 @@ const Footbar = () => {
   const offset = 56;
 
   useEffect(async () => {
-    await fetch(`/wp-api-menus/v2/menus/${process.env.NEXT_PUBLIC_SOCMED_ID}`, { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json` })
-      .then((menu) => setMenus(menu.items || []))
-      .catch(() => false)
+    const localSocial = (localStorage.getItem('social') && JSON.parse(localStorage.getItem('social'))) ||
+      await fetch(`/wp-api-menus/v2/menus/${process.env.NEXT_PUBLIC_SOCMED_ID}`, { baseUrl: `${process.env.NEXT_PUBLIC_API_HOST}/wp-json` })
+        .then((menu) => menu.items)
+        .catch(() => []);
+
+    setMenus(localSocial);
+    localStorage.setItem('social', JSON.stringify(localSocial));
 
     function updateScrollPosition() {
-
       const scrolled = (window.scrollY + offset) >= (document.querySelector('.above-the-fold') ? document.querySelector('.above-the-fold').clientHeight : window.visualViewport.height / 2);
       setScrolled(scrolled);
     }

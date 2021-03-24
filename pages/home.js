@@ -149,7 +149,7 @@ const Home = ({ video }) => {
           <div id="invest" className="container">
             <div className="row">
               <div className="col-12 col-sm-6 offset-sm-6">
-                <Forms id={82} />
+                <Forms id={process.env.NEXT_PUBLIC_CONTACTFORM_ID} />
               </div>
             </div>
           </div>

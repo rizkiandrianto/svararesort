@@ -44,7 +44,6 @@ const Page = ({ statusCode, page }) => {
 export async function getServerSideProps(ctx) {
   const pages = await fetch(`/pages?slug=${ctx.query.slug}`)
     .catch(() => []);
-  console.log(pages, ctx.query.slug);
   const statusCode = pages == 0 ? 404 : 200;
   ctx.res.status = statusCode;
 

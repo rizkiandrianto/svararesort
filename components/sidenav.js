@@ -19,7 +19,7 @@ const Sidenav = ({ menus, show }) => (
           }
 
           ul {
-            padding-top: 76px !important;
+            padding-top: 100px !important;
             height: 100%;
 
             li {

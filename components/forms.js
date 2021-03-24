@@ -89,6 +89,12 @@ const Forms = ({ id }) => {
     );
   }
 
+  if (!form.properties) {
+    return (
+      <p className="text-center">Loading Form...</p>
+    );
+  }
+
   return (
     <form name={form.slug} action={url + '/feedback'} method="POST" onSubmit={onSubmit} className="d-flex flex-column">
       {
