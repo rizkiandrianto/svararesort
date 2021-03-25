@@ -20,12 +20,17 @@ const Sidenav = ({ menus, show }) => (
           }
 
           ul {
-            padding-top: 100px !important;
+            padding: 100px 20% !important;
             height: 100%;
 
             li {
               list-style: none;
-              margin-bottom: 20px !important;
+              padding: 10px;
+              border-bottom: 1px solid black;
+
+              &:first-child {
+                border-top: 1px solid black;
+              }
             }
           }
         }

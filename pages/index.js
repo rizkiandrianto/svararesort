@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import Title from '../components/title';
 import Navbar from '../components/navbar';
-import { useEffect } from 'react';
 import Footbar from '../components/footbar';
 import Forms from '../components/forms';
+import { fetch } from '../utils/fetch';
 
-const HomepageTemp = () => {
+const HomepageTemp = ({ video }) => {
   useEffect(() => {
     setTimeout(() => {
       if (typeof window !== 'undefined') document.querySelector('body').classList.add('finish');
@@ -23,7 +24,7 @@ const HomepageTemp = () => {
       <style jsx>
         {`
           .above-the-fold {
-            background: url('/images/bg-indonesia-dark.jpg');
+            background: black;
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
@@ -39,6 +40,11 @@ const HomepageTemp = () => {
               @media (max-width: 1024px) {
                 font-size: 16px;
                 line-height: 1.5;
+              }
+
+              img {
+                filter: grayscale(1) contrast(100) invert(1);
+                margin-bottom: 32px;
               }
             }
           }
@@ -56,7 +62,13 @@ const HomepageTemp = () => {
           section {
             background: white;
             position: relative;
-            z-index: 2;
+            z-index: 3;
+
+            &.above-the-fold {
+              video {
+                opacity: 0.3;
+              }
+            }
           }
         `}
       </style>
@@ -64,7 +76,15 @@ const HomepageTemp = () => {
       <Navbar />
 
       <section id="landing" className="above-the-fold align-items-center justify-content-center">
-        <h1 className="text-light text-center">World's First Blockchain Powered Hotel <br />Coming to You in 2023!</h1>
+        {video[0] && (
+          <video autoPlay loop muted playsInline poster={video[0].featured_image} className="video">
+            <source src={video[0].source_url} type="video/mp4" />
+          </video>
+        )}
+        <h1 className="text-light text-center d-flex flex-column justify-content-center align-items-center text-uppercase">
+          <img src="/images/logo-square.png" height="70" width="70" />
+          World's First Blockchain Smart Resort<br />Coming to You in 2023!
+        </h1>
       </section>
 
       {
@@ -88,6 +108,15 @@ const HomepageTemp = () => {
       <Footbar />
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const video = await fetch('/media?slug=home-video').catch(() => []);
+  return {
+    props: {
+      video
+    }
+  };
 }
 
 export default HomepageTemp;
