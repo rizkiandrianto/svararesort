@@ -9,13 +9,14 @@ const Sidenav = ({ menus, show }) => (
           height: 100vh;
           position: fixed;
           z-index: 8;
-          left: 100%;
+          right: -100%;
           top: 0;
           background: rgba(255, 255, 255, 0.8);
-          transition: left 0.5s ease;
+          transition: right 0.5s ease;
+          max-width: 500px;
 
           &.show {
-            left: 0;
+            right: 0;
           }
 
           ul {

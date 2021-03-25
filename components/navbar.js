@@ -118,16 +118,7 @@ const Navbar = () => {
           <img src={process.env.NEXT_PUBLIC_IMAGE_CDN + 'https://api.svararesort.com/logotype?w=100&h=35'} />
         </div>
         <ul className="m-0 p-0 d-flex">
-          {
-            menus.map((menu, index) => (
-              <li key={index} className={`d-none d-sm-block ${menu.classes}`} data-anchor={menu.url.replace('#', '')} key={index}>
-                <Link href={menu.url}>
-                  {menu.title}
-                </Link>
-              </li>
-            ))
-          }
-          <li className="d-block d-sm-none">
+          <li>
             <a onClick={() => setSidenav(!sidenav)} className={`btn btn-outline-${scrolled || sidenav ? 'dark' : 'light'} text-${(scrolled || sidenav) && 'dark'}`}>
               <div className="fas fa-bars" />
             </a>
