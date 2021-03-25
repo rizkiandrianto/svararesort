@@ -120,13 +120,13 @@ const Navbar = () => {
         <ul className="m-0 p-0 d-flex">
           <li>
             <a onClick={() => setSidenav(!sidenav)} className={`btn btn-outline-${scrolled || sidenav ? 'dark' : 'light'} text-${(scrolled || sidenav) && 'dark'}`}>
-              <div className="fas fa-bars" />
+              <div className={`fas fa-${sidenav ? 'times' : 'bars'}`} />
             </a>
           </li>
         </ul>
       </nav>
 
-      <Sidenav menus={menus} show={sidenav} />
+      <Sidenav menus={menus} show={sidenav} onChange={() => setSidenav(!sidenav)} />
     </>
   );
 };

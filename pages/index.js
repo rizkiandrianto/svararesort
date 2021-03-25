@@ -90,7 +90,7 @@ const HomepageTemp = ({ video }) => {
       {
         process.env.NEXT_PUBLIC_CONTACTFORM_ID && (
           <section id="contact" className="container">
-            <div className="row w-100">
+            <div className="row flex-grow-1">
               <div className="col-12 col-md-4 offset-md-4">
                 <Forms id={process.env.NEXT_PUBLIC_CONTACTFORM_ID} />
               </div>

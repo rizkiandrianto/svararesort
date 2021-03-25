@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const Sidenav = ({ menus, show }) => (
+const Sidenav = ({ menus, show, onChange }) => (
   <>
     <style jsx>
       {`
@@ -11,7 +11,7 @@ const Sidenav = ({ menus, show }) => (
           z-index: 8;
           right: -100%;
           top: 0;
-          background: rgba(255, 255, 255, 0.8);
+          background: rgb(255, 255, 255);
           transition: right 0.5s ease;
           max-width: 500px;
 
@@ -56,7 +56,7 @@ const Sidenav = ({ menus, show }) => (
       <ul className="m-0 p-0 overflow-auto">
         {
           menus.map((menu, index) => (
-            <li className="m-0" key={index}>
+            <li onClick={onChange} className="m-0" key={index}>
               <Link href={menu.url}>
                 {menu.title}
               </Link>
