@@ -115,7 +115,9 @@ const Navbar = () => {
       </style>
       <nav id="navbar-wrapper" className={scrolled && !sidenav && 'scrolled'}>
         <div className="logo-wrapper pl-4">
-          <img src={process.env.NEXT_PUBLIC_IMAGE_CDN + 'https://api.svararesort.com/logotype?w=100&h=35'} />
+          <Link href="/">
+            <img src={process.env.NEXT_PUBLIC_IMAGE_CDN + 'https://api.svararesort.com/logotype?w=100&h=35'} />
+          </Link>
         </div>
         <ul className="m-0 p-0 d-flex">
           <li>
