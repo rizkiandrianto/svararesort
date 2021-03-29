@@ -17,6 +17,33 @@ const HomepageTemp = ({ video }) => {
     }
   }, []);
 
+  const renderAboveBG = () => {
+    if (!video[0]) return null;
+
+    if (video[0].source_url.endsWith('.mp4')) {
+      return (
+        <video autoPlay loop muted playsInline poster={video[0].featured_image} className="video">
+          <source src={video[0].source_url} type="video/mp4" />
+        </video>
+      )
+    }
+
+    return (
+      <>
+        <style jsx>
+          {`
+            img {
+              object-fit: cover;
+              height: 100%;
+              width: 100%;
+            }
+          `}
+        </style>
+        <img src={process.env.NEXT_PUBLIC_IMAGE_CDN + video[0].source_url} />
+      </>
+    );
+  }
+
   return (
     <>
       <Title title="Home Sweet Home" />
@@ -76,11 +103,7 @@ const HomepageTemp = ({ video }) => {
       <Navbar />
 
       <section id="landing" className="above-the-fold align-items-center justify-content-center">
-        {video[0] && (
-          <video autoPlay loop muted playsInline poster={video[0].featured_image} className="video">
-            <source src={video[0].source_url} type="video/mp4" />
-          </video>
-        )}
+        {renderAboveBG()}
         <h1 className="text-light text-center d-flex flex-column justify-content-center align-items-center text-uppercase">
           <img src="/images/logo-square.png" height="70" width="70" />
           World's First Blockchain Smart Resort<br />Coming to You in 2023!
