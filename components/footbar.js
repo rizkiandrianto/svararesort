@@ -64,7 +64,7 @@ const Footbar = () => {
           }
         `}
       </style>
-      <div id="footbar-wrapper" className={`bg-dark ${scrolled && 'scrolled'}`}>
+      <div id="footbar-wrapper" className={`bg-dark scrolled`}>
         <ul className="d-flex p-0 m-0 justify-content-center align-items-center w-100 h-100">
           {
             menus.map((menu, index) => (
