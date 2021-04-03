@@ -1,0 +1,19 @@
+{
+  "short_name": "SvaraResort",
+  "name": "SvaraResort | World's First Blockchain Resort",
+  "theme_color": "#668019",
+  "background_color": "#B0A97F",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "splash_pages": null
+}

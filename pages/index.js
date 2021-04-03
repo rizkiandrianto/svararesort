@@ -97,6 +97,29 @@ const HomepageTemp = ({ video }) => {
               }
             }
           }
+
+          #contact {
+            $primary: #668019;
+            label {
+              margin-bottom: 20px;
+
+              p {
+                color: $primary;
+                margin-bottom: 10px;
+              }
+
+              input, textarea {
+                border: 1px solid $primary;
+                color: $primary;
+                outline: none;
+                border-radius: 4px;
+              }
+            }
+
+            a {
+              color: $primary;
+            }
+          }
         `}
       </style>
 
