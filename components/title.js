@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 const Title = ({ title }) => (
   <Head>
-    <title>{title} || SVARARESORT.COM</title>
+    <title>{title ? title + ' |' : '' } SvaraResort | World's First Blockchain Resort</title>
   </Head>
 );
 

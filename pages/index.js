@@ -46,7 +46,7 @@ const HomepageTemp = ({ video }) => {
 
   return (
     <>
-      <Title title="Home Sweet Home" />
+      <Title />
 
       <style jsx>
         {`
